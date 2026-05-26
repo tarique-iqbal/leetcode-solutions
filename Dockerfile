@@ -22,4 +22,4 @@ RUN go mod tidy
 
 COPY . .
 
-CMD ["go", "test", "-v", "./solution/..."]
+CMD ["go", "test", "-v", "./..."]

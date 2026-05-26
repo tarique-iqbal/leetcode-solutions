@@ -23,13 +23,16 @@ dev:
 		$(IMAGE_NAME)
 
 test:
-	docker run --rm $(IMAGE_NAME) go test -v ./solution/...
+	docker run --rm $(IMAGE_NAME) go test $(GO_TEST_FLAGS) ./...
+
+test-v: GO_TEST_FLAGS=-v
+test-v: test
 
 test-local:
 	docker run --rm \
 		-v $(PWD):$(APP_DIR) \
 		-w $(APP_DIR) \
-		$(IMAGE_NAME) go test -v ./solution/...
+		$(IMAGE_NAME) go test -v ./...
 
 shell:
 	docker run -it --rm $(IMAGE_NAME) bash
