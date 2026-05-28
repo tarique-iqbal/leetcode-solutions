@@ -1,4 +1,4 @@
-package solution
+package main
 
 import (
 	"reflect"
@@ -70,9 +70,12 @@ func TestLevelOrder(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := levelOrder(tt.root)
-		if !reflect.DeepEqual(got, tt.expected) {
-			t.Errorf("levelOrder() = %v, want %v", got, tt.expected)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			got := levelOrder(tt.root)
+
+			if !reflect.DeepEqual(got, tt.expected) {
+				t.Errorf("levelOrder() = %v, want %v", got, tt.expected)
+			}
+		})
 	}
 }
